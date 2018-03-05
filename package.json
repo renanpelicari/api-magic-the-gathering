@@ -1,0 +1,32 @@
+{
+  "name": "magic-the-gathering",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "7.0.0",
+    "eslint": "3.8.1",
+    "eslint-config-react-app": "0.4.0",
+    "eslint-loader": "1.6.0",
+    "eslint-plugin-flowtype": "2.21.0",
+    "eslint-plugin-import": "2.0.1",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "babel-plugin-lodash": "3.2.11"
+  },
+  "dependencies": {
+    "lodash": "4.17.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-md": "^1.2.11",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
+}

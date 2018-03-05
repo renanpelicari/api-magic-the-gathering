@@ -1,0 +1,10 @@
+.card-list-background {
+  width: 100%;
+  background-color: #FAFAFA;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .card-list-container {
+  }
+}
+
