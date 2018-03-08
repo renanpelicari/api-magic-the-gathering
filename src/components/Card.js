@@ -23,7 +23,7 @@ class Card extends Component {
   renderCardInfo(card) {
     window.console.log(card);
     return (
-        <ul>
+        <ol>
           <li>{card.name}</li>
           <li>Rarity: {card.rarity}</li>
           <li>Type: {card.type}</li>
@@ -31,7 +31,7 @@ class Card extends Component {
           <li>Toughness: {card.toughness}</li>
           <li>Mana Cost: {card.manaCost}</li>
           <li>{card.text}</li>
-        </ul>);
+        </ol>);
   }
 
   render() {
