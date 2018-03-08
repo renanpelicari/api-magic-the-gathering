@@ -9,11 +9,27 @@
   margin: 15px;
   display: inline !important;
   float: left;
+  background-color: #191612;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.card-div:hover {
+  opacity: 0.5;
 }
 
 .card-div img {
-  cursor: pointer;
   display: inherit;
+  float: left;
+}
+
+.card-div ul {
+  float: right;
+  padding: 10px 10px 10px 25px;
+  color: white;
+  list-style-type: persian;
+  font-size: 0.8em;
+  max-width: 218px;
 }
 
 .card-footer {

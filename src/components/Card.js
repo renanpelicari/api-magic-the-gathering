@@ -1,39 +1,46 @@
 import React, { Component } from 'react';
-import CardInfo from './CardInfo';
 import '../css/Card.css';
 
 class Card extends Component {
 
   constructor(props) {
     super(props);
-    this.showAlert = this.showAlert.bind(this);
-    this.openCardInfoDialog = this.openCardInfoDialog.bind(this);
+
+    this.state = {
+      infoIsVisible: false
+    };
+
+    this.changeInfoIsVisible = this.changeInfoIsVisible.bind(this);
+    this.renderCardInfo = this.renderCardInfo.bind(this);
   }
 
-  showAlert(card) {
-    const message = `
-      TEMPORARY ALERT (while CardInfo component is not working)
-      Name: ${card.name}
-      Rarity: ${card.rarity}
-      Type: ${card.type}
-      Power: ${card.power}
-      Toughness: ${card.toughness}
-      Mana Cost: ${card.manaCost}
-      Additional Info: 
-      ${card.text}`;
-    alert (message);
+  changeInfoIsVisible() {
+    this.setState({
+      infoIsVisible: !this.state.infoIsVisible
+    });
   }
 
-  openCardInfoDialog(card, index) {
-    this.showAlert(card);
-    return <CardInfo card={card} index={index} />;
+  renderCardInfo(card) {
+    window.console.log(card);
+    return (
+        <ul>
+          <li>{card.name}</li>
+          <li>Rarity: {card.rarity}</li>
+          <li>Type: {card.type}</li>
+          <li>Power: {card.power}</li>
+          <li>Toughness: {card.toughness}</li>
+          <li>Mana Cost: {card.manaCost}</li>
+          <li>{card.text}</li>
+        </ul>);
   }
 
   render() {
     const {card, index} = this.props;
+    const {infoIsVisible} = this.state;
     return (
-      <div className='card-div' onClick={() => this.openCardInfoDialog(card, index)}>
+      <div className='card-div' key={index} onClick={() => this.changeInfoIsVisible()}>
         <img className='card-image' src={card.imageUrl} alt={card.name} />
+        {infoIsVisible ? this.renderCardInfo(card) : null}
       </div>
     );
   }

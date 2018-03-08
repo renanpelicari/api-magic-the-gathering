@@ -4,7 +4,7 @@ import * as request from 'request';
 import {isEmpty} from 'lodash';
 import '../css/Card.css';
 
-class CardList extends Component {
+class CardContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -32,13 +32,11 @@ class CardList extends Component {
 
   render() {
     return (
-      <div>
-        <body className='card-container-body'>
-          {this.renderCards()}
-        </body>
+      <div className='card-container-body'>
+        {this.renderCards()}
       </div>
     );
   }
 }
 
-export default CardList;
+export default CardContainer;
