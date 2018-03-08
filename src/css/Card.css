@@ -1,5 +1,24 @@
-.card-container {
-  display: inline;
-  padding: 10px;
+.card-container-body {
+  width: 100%;
+  height: calc(100vh - 115px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.card-div {
+  margin: 15px;
+  display: inline !important;
+  float: left;
+}
+
+.card-div img {
   cursor: pointer;
+  display: inherit;
+}
+
+.card-footer {
+  display: block;
+  background-color: #222;
+  height: 65px;
+  margin-bottom: 0;
 }

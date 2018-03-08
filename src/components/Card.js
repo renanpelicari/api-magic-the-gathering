@@ -32,10 +32,8 @@ class Card extends Component {
   render() {
     const {card, index} = this.props;
     return (
-      <div className='card-container' onClick={() => this.openCardInfoDialog(card, index)}>
-        <span className='card-image'>
-          <img className='card-image' src={card.imageUrl} alt={card.name} />
-        </span>
+      <div className='card-div' onClick={() => this.openCardInfoDialog(card, index)}>
+        <img className='card-image' src={card.imageUrl} alt={card.name} />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from './Card';
 import * as request from 'request';
 import {isEmpty} from 'lodash';
-import '../css/CardList.css';
+import '../css/Card.css';
 
 class CardList extends Component {
 
@@ -32,10 +32,10 @@ class CardList extends Component {
 
   render() {
     return (
-      <div className='card-list-background'>
-        <div className='card-list-container'>
+      <div>
+        <body className='card-container-body'>
           {this.renderCards()}
-        </div>
+        </body>
       </div>
     );
   }
