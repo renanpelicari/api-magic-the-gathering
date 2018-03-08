@@ -1,5 +1,40 @@
-.card-container {
-  display: inline;
-  padding: 10px;
+.card-container-body {
+  width: 100%;
+  height: calc(100vh - 115px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.card-div {
+  margin: 15px;
+  display: inline !important;
+  float: left;
+  background-color: #191612;
+  border-radius: 20px;
   cursor: pointer;
+}
+
+.card-div:hover {
+  opacity: 0.5;
+}
+
+.card-div img {
+  display: inherit;
+  float: left;
+}
+
+.card-div ul {
+  float: right;
+  padding: 10px 10px 10px 25px;
+  color: white;
+  list-style-type: persian;
+  font-size: 0.8em;
+  max-width: 218px;
+}
+
+.card-footer {
+  display: block;
+  background-color: #222;
+  height: 65px;
+  margin-bottom: 0;
 }
