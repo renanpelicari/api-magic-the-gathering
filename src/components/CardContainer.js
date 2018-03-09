@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import * as request from 'request';
-import {isEmpty} from 'lodash';
+import {bindAll, isEmpty} from 'lodash';
 import '../css/Card.css';
 
 const initialState = {
   showAddInfo: false,
-  textShowAddInfo: 'Show Additional Info'
+  textShowAddInfo: 'Show Additional Info',
+  pageNumber: 1,
+  cards: []
 };
+const API_URL = 'https://api.magicthegathering.io/v1/cards';
+const PAGE_SIZE = 20;
 
 class CardContainer extends Component {
 
@@ -15,20 +19,24 @@ class CardContainer extends Component {
     super(props);
 
     this.state = {
-      cards: [],
+      cards: initialState.cards,
       showAddInfo: initialState.showAddInfo,
-      textShowAddInfo: initialState.textShowAddInfo
+      textShowAddInfo: initialState.textShowAddInfo,
+      pageNumber: initialState.pageNumber
     };
-
-    this.renderFilter = this.renderFilter.bind(this);
-    this.renderCards = this.renderCards.bind(this);
-    this.changeShowAdditionalInfo = this.changeShowAdditionalInfo.bind(this);
+    bindAll(this, ['loadCards', 'renderFilter', 'renderCards', 'changeShowAdditionalInfo', 'shouldLoadMore']);
   }
 
   componentDidMount() {
-    request.get('https://api.magicthegathering.io/v1/cards', (error, response, body) => {
+    this.loadCards();
+  }
+
+  loadCards() {
+    const {pageNumber} = this.state;
+    const url = `${API_URL}?page=${pageNumber}&pageSize=${PAGE_SIZE}`;
+    request.get(url, (error, response, body) => {
       this.setState({
-        cards: JSON.parse(body).cards
+        cards: [...this.state.cards,  ...JSON.parse(body).cards]
       });
     });
   }
@@ -39,6 +47,13 @@ class CardContainer extends Component {
       showAddInfo: !showAddInfo,
       textShowAddInfo: !showAddInfo ? 'Hide Additional Info' : initialState.textShowAddInfo
     });
+  }
+
+  shouldLoadMore() {
+    this.setState({
+      pageNumber: this.state.pageNumber + 1
+    });
+    this.loadCards();
   }
 
   renderFilter() {
@@ -53,7 +68,7 @@ class CardContainer extends Component {
   renderCards() {
     const {cards, showAddInfo} = this.state;
     return (
-      <div className='card-container-list'>
+      <div className='card-container-list' onWheel={() => this.shouldLoadMore()}>
         {isEmpty(cards) ? null :
           cards.map((card, index) => <Card card={card} index={index} showAddInfo={showAddInfo} />)}
       </div>
