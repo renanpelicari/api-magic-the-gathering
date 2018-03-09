@@ -1,4 +1,22 @@
-.card-container-body {
+.card-container-filter {
+  background-color: #222;
+  height: 20px;
+}
+
+.show-hide-all-info {
+  cursor: pointer;
+  background-color: #aeaeae;
+  border-radius: 4px 4px 0 0;
+  color: black;
+  font-size: 0.8em;
+  font-weight: bold;
+  float: right;
+  padding: 2px 8px 2px 8px;
+  margin-right: 40px;
+  text-transform: lowercase;
+}
+
+.card-container-list {
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 115px);
@@ -11,7 +29,7 @@
   cursor: pointer;
   display: inline !important;
   float: left;
-  margin: 15px;
+  margin: 8px 15px 8px 15px;
 }
 
 .card-div img:hover {

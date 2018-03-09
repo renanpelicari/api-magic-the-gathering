@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {isEqual} from 'lodash';
 import '../css/Card.css';
 
 class Card extends Component {
@@ -14,6 +15,14 @@ class Card extends Component {
     this.renderCardInfo = this.renderCardInfo.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!isEqual(this.props.showAddInfo, nextProps.showAddInfo)) {
+      this.setState({
+        infoIsVisible: nextProps.showAddInfo
+      });
+    }
+  }
+
   changeInfoIsVisible() {
     this.setState({
       infoIsVisible: !this.state.infoIsVisible
@@ -21,7 +30,6 @@ class Card extends Component {
   }
 
   renderCardInfo(card) {
-    window.console.log(card);
     return (
         <ol>
           <li>{card.name}</li>
@@ -40,7 +48,7 @@ class Card extends Component {
     return (
       <div className='card-div' key={index} onClick={() => this.changeInfoIsVisible()}>
         <img className='card-image' src={card.imageUrl} alt={card.name} />
-        {infoIsVisible ? this.renderCardInfo(card) : null}
+        {(infoIsVisible) ? this.renderCardInfo(card) : null}
       </div>
     );
   }
